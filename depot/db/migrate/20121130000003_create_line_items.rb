@@ -6,10 +6,13 @@
 # We make no guarantees that this code is fit for any purpose. 
 # Visit http://www.pragmaticprogrammer.com/titles/rails4 for more book information.
 #---
-require 'test_helper'
+class CreateLineItems < ActiveRecord::Migration
+  def change
+    create_table :line_items do |t|
+      t.references :product, index: true
+      t.belongs_to :cart, index: true
 
-class LineItemTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+      t.timestamps
+    end
+  end
 end
